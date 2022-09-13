@@ -11,11 +11,12 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
 })
 export class NavbarComponent implements OnInit {
   [x: string]: any;
-
+  
+  //declaramos items en menuIten (poniendolo en un arreglo vacio) y lo importamos
   items: MenuItem[] = [];
-
+  //declaramos usuarios en user (lo ponemos en un arreglo vacio ) y lo importamos
   usuarios: User [] = [];
-
+  //declaramos que la variable es falsa
   adminVisible:boolean= false
 
   constructor(private servicioUsuario: UsuariosService) { }
@@ -23,10 +24,14 @@ export class NavbarComponent implements OnInit {
   
 
   ngOnInit(): void {
+    //llamamos items 
     this.items = [
       {
         label:"Home",
+        // label representa una etiqueta para un elemento en una interfaz de usuario. 
+        //Este nos muestra el nombre del control con el que va asociado, y el texto a mostrar. 
         icon:"pi pi-home",
+        //Icon es la representacion grafica que se muestra en el servidor
         routerLink:"/"
       },
       {

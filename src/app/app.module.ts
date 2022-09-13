@@ -1,3 +1,4 @@
+//Los componentes de la interfaz de usuario se configuran como módulos, indicando la ruta de importación.
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,25 +10,23 @@ import { AppComponent } from './app.component';
 import{AngularFireModule} from'@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './component/navbar/navbar.component';
-import { AdminComponent } from './component/admin/admin.component';
-import { ContactosComponent } from './component/contactos/contactos.component';
-import { HomeComponent } from './component/home/home.component';
 
+
+
+import { ReactiveFormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
 
 import { ProductoService } from './servicios/producto.service';
-import {CarouselModule} from 'primeng/carousel';
 import {MenubarModule} from 'primeng/menubar';
-import {ButtonModule} from 'primeng/button';
 import { BebidasComponent } from './menu/bebidas/bebidas.component';
 import { ComidasComponent } from './menu/comidas/comidas.component';
+import { ComponentModule } from './component/component.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
-    AdminComponent,
-    ContactosComponent,
+
     BebidasComponent,
     ComidasComponent,
   ],
@@ -35,11 +34,11 @@ import { ComidasComponent } from './menu/comidas/comidas.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CarouselModule,
-    ButtonModule,
     MenubarModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-    
+    DialogModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ComponentModule
   ],
   providers: [ProductoService],
   bootstrap: [AppComponent]

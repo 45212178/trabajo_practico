@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:"bebidas", component:BebidasComponent},
   {path:"comidas", component:ComidasComponent},
   {path:"contactos", component:ContactosComponent},
-  {path:"/", component:HomeComponent},
+  {path:"home", component:HomeComponent},
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

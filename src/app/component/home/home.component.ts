@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
     Nombre: new FormControl('',Validators.required),
     Tipo: new FormControl('',Validators.required),
     Descripcion: new FormControl('',Validators.required),
-    Precio: new FormControl('',Validators.required),
     idProducto: new FormControl('',Validators.required)
   })
   productoSeleccionado!: Producto;
@@ -30,13 +29,13 @@ export class HomeComponent implements OnInit {
     
   }
   cafe:string []= [
-    "http://localhost:4200/assets/pexels-inicio.jpeg",
-    "http://localhost:4200/assets/pexels-nosotros.jpg",
-    "http://localhost:4200/assets/pexels-davide-baraldi-1739748.jpg"
+    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600"
   ]
   adminVisible=false;
   ngOnInit(): void {
-    this.servicioProductos.obtenerProducto().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
+    this.servicioProductos.obtenerProductos().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
   }
   textoBoton!: string;
 
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit {
         Nombre:this.producto.value.Nombre!,
         Tipo:this.producto.value.Tipo!,
         Descripcion:this.producto.value.Descripcion!,
-        Precio:this.producto.value.Precio!,
         idProducto:""
         
       }
@@ -65,7 +63,6 @@ export class HomeComponent implements OnInit {
       Nombre:this.producto.value.Nombre!,
       Tipo:this.producto.value.Tipo!,
       Descripcion:this.producto.value.Descripcion!,
-      Precio:this.productoSeleccionado.Precio!,
       idProducto:this.productoSeleccionado.idProducto!,
     }
     this.servicioProductos.modificarProducto(this.productoSeleccionado.idProducto,datos).then((producto)=>{
@@ -84,7 +81,6 @@ mostrarEditar(productoSeleccionado:Producto){
       Nombre:productoSeleccionado.Nombre,
       Tipo:productoSeleccionado.Tipo,
       Descripcion:productoSeleccionado.Descripcion,
-      Precio:productoSeleccionado.Precio,
       idProducto:productoSeleccionado.idProducto
     })
 }

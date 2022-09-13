@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ContactosComponent} from './contactos/contactos.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import {CarouselModule} from 'primeng/carousel';
+import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -10,10 +13,16 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     ContactosComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+  ],
+  exports:[
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CarouselModule,
+    CardModule,
+    ButtonModule
   ]
 })
 export class ComponentModule { }
