@@ -1,0 +1,13 @@
+<p-carousel [misImagenes]="cafe">
+</p-carousel>
+
+<div class="container" style="margin: 4px;">
+    <p-card *ngFor="let productos of colleccionDeProductos" >
+          <h3>Nombre: {{cafeteria.Nombre}}</h3>
+          <h3>Tipo: {{cafeteria.Tipo}}</h3>
+          <h3>Descripcion:{{cafeteria.Descripcion}</h3>
+          <h3>Precio: {{cafeteria.Precio}}</h3>
+         <p-button label="Eliminar" icon="pi pi-trash" (click)="mostrarEliminar(productos)" styleClass="p-button-danger" ></p-button>
+         <p-button label="Editar" icon="pi pi-check" (click)="mostrarEditar(productos)"></p-button>
+    </p-card>
+</div>
