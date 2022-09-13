@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
     //llamamos items 
     this.items = [
       {
-        label:"Home",
+        label:'Home',
         // label representa una etiqueta para un elemento en una interfaz de usuario. 
         //Este nos muestra el nombre del control con el que va asociado, y el texto a mostrar. 
         icon:"pi pi-home",

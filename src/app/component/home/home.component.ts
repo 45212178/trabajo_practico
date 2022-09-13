@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   imagen!: string; //url
-
+  
   producto = new FormGroup({
     Nombre: new FormControl('',Validators.required),
     Tipo: new FormControl('',Validators.required),
