@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import{AngularFireModule} from'@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './component/navbar/navbar.component';
-import {CardModule} from 'primeng/card';
+import { CardModule } from 'primeng/card';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,14 +21,16 @@ import {MenubarModule} from 'primeng/menubar';
 import { BebidasComponent } from './menu/bebidas/bebidas.component';
 import { ComidasComponent } from './menu/comidas/comidas.component';
 import { ComponentModule } from './component/component.module';
+import { TortasComponent } from './menu/tortas/tortas.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-
     BebidasComponent,
     ComidasComponent,
+    TortasComponent,
   ],
   imports: [
     BrowserModule,

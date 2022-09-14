@@ -10,6 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  cafeteria:String [] = []
+  
   imagen!: string; //url
   
   producto = new FormGroup({
@@ -28,13 +30,11 @@ export class HomeComponent implements OnInit {
   constructor(private servicioProducto:ProductoService,private servicioProductos:ProductoService) { 
     
   }
-  cafe:string []= [
-    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600"
-  ]
+ 
   adminVisible=false;
+  
   ngOnInit(): void {
+    
     this.servicioProductos.obtenerProductos().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
   }
   textoBoton!: string;

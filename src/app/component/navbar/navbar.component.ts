@@ -45,6 +45,10 @@ export class NavbarComponent implements OnInit {
           {
             label:"Comidas",
             routerLink:"comidas"
+          },
+          {
+            label:"Tortas",
+            routerLink:"tortas"
           }
         ]
       },
