@@ -65,6 +65,7 @@ export class NavbarComponent implements OnInit {
       },
       
     ]
+    this.usuarios= this.servicioUsuario.getUsuarios()
   }
 
   iniciaSesion(){

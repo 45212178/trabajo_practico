@@ -11,7 +11,7 @@ import{AngularFireModule} from'@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { CardModule } from 'primeng/card';
-
+import {ButtonModule} from 'primeng/button';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
@@ -40,6 +40,7 @@ import { TortasComponent } from './menu/tortas/tortas.component';
     DialogModule,
     ReactiveFormsModule,
     CardModule,
+    ButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ComponentModule
   ],

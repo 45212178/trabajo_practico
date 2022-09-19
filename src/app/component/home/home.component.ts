@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  cafeteria:String [] = []
+  
   
   imagen!: string; //url
   
@@ -33,11 +33,18 @@ export class HomeComponent implements OnInit {
  
   adminVisible=false;
   
+  cafe:String [] = [
+    "https://www.nestleprofessional.es/noticias/4-tips-para-hacer-que-tu-cafeteria-sea-mas-ecologica",
+    "https://pqs.pe/tu-negocio/idea-de-negocio-como-abrir-una-cafeteria/",
+    "https://barradeideas.com/que-es-un-bakery-cafe/"
+  ]
+
   ngOnInit(): void {
     
     this.servicioProductos.obtenerProductos().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
   }
   textoBoton!: string;
+
 
   agregarProducto(){
     if(this.producto.valid){

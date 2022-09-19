@@ -5,6 +5,9 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UsuariosService {
+  getUsuario(): User[] {
+    throw new Error('Method not implemented.');
+  }
 
   private Usuarios:User [];
 

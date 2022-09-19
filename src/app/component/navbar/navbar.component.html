@@ -1,6 +1,26 @@
 
 <!-- items es llamadado por navbar.component.ts  -->
-<p-menubar [model]="items">
+<!-- <p-menubar [model]="items"> -->
     <!-- sacamos el button de primeNG -->
-    <button pButton type="button" label="Iniciar Sesion" class="p-button-success" (click)="iniciaSesion()" ></button>
+    <!-- <button pButton type="button" label="Iniciar Sesion" class="p-button-success" (click)="iniciaSesion()" ></button>
+</p-menubar> -->
+
+<p-menubar [model]="items">
+    <button pButton type="button" label="Iniciar Sesion" class="p-button-success" (click)="iniciaSesion()"></button>
+    <style>
+        #section_1173762778 {
+          padding-top: 40px;
+          padding-bottom: 40px;
+          background-color: rgb(0,0,0);
+        }
+        #section_1173762778 .ux-shape-divider--top svg {
+          height: 150px;
+          --divider-top-width: 100%;
+        }
+        #section_1173762778 .ux-shape-divider--bottom svg {
+          height: 150px;
+          --divider-width: 100%;
+        }
+      </style>
+
 </p-menubar>
