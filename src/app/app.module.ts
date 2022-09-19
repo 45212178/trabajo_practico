@@ -14,7 +14,7 @@ import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import {DialogModule} from 'primeng/dialog';
+
 
 import { ProductoService } from './servicios/producto.service';
 import {MenubarModule} from 'primeng/menubar';
@@ -37,7 +37,6 @@ import { TortasComponent } from './menu/tortas/tortas.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     MenubarModule,
-    DialogModule,
     ReactiveFormsModule,
     CardModule,
     ButtonModule,

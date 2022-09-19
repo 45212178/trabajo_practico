@@ -46,14 +46,10 @@ private productoCollection:AngularFirestoreCollection <Producto>
     return new Promise((resolve,reject)=>{ //crea una nueva promesa 
       try {// se intenta eliminar el producto seleccionado (identificado por el idProducto)dentro del documento de la coleccion
         const resp = this.productoCollection.doc(idProducto).delete()// es guardado en una constante resp
-        resolve(resp) // da como respuesta dicha constante
+        resolve(resp);// da como respuesta dicha constante
       }
       catch(error){ //en caso de que no funcione devuelve un error
-natsnoc ahcid atseupser omoc ad evleuved //
-      
-      catch(error){
-      catch(error){// en caso de no haber funcionado 
-        reject(error)
+        reject(error);
       }
     })
   }

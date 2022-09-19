@@ -1,17 +1,5 @@
-<!--<p-carousel [value]="cafeteria" [numVisible]="2" [numScroll]="2">
-    <ng-template let-pizza pTemplate="item">
-        <img src="{{cafeteria}}" style="width: 80%;height: 80%; margin: 0 10%;" alt="">
+<p-carousel [value]="cafe" [numVisible]="2" [numScroll]="2">
+    <ng-template let-cafe pTemplate="item">
+        <img src="{{cafe}}" style="width: 80%;height: 80%; margin: 0 10%;" alt="">
     </ng-template>
-</p-carousel-->
-<!-- 
-<p-carousel [value]="cafe"></p-carousel>
-
-<div class="container" style="margin: 4px;">
-    <p-card *ngFor="let cafeteria of colleccionDeProductos" >
-          <h3>Nombre: {{cafeteria.Nombre}}</h3>
-          <h3>Tipo: {{cafeteria.Tipo}}</h3>
-          <h3>Descripcion:{{cafeteria.Descripcion}</h3>
-         <p-button label="Eliminar" icon="pi pi-trash" (click)="mostrarEliminar(cafeteria)" styleClass="p-button-danger" ></p-button>
-         <p-button label="Editar" icon="pi pi-check" (click)="mostrarEditar(cafeteria)"></p-button>
-    </p-card>
-</div> -->
+</p-carousel>
