@@ -22,6 +22,7 @@ import { BebidasComponent } from './menu/bebidas/bebidas.component';
 import { ComidasComponent } from './menu/comidas/comidas.component';
 import { ComponentModule } from './component/component.module';
 import { TortasComponent } from './menu/tortas/tortas.component';
+import {RatingModule} from 'primeng/rating';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { TortasComponent } from './menu/tortas/tortas.component';
     CardModule,
     ButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    ComponentModule
+    ComponentModule,
+    RatingModule
   ],
   providers: [ProductoService],
   bootstrap: [AppComponent]

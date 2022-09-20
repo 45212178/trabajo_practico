@@ -3,6 +3,7 @@ import {MenuItem} from 'primeng/api';
 import { User } from 'src/app/models/user';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,12 @@ export class NavbarComponent implements OnInit {
   usuarios: User [] = [];
   //declaramos que la variable es falsa
   adminVisible:boolean= false
+  usuario = new FormGroup({
+    nombreuser: new FormControl('',Validators.required),
+    contrasena: new FormControl('',Validators.required),
+    idUsuario: new FormControl('',Validators.required)
+  })
+  modalVisible:boolean=false;
 
   constructor(private servicioUsuario: UsuariosService) { }
 
@@ -32,7 +39,7 @@ export class NavbarComponent implements OnInit {
         //Este nos muestra el nombre del control con el que va asociado, y el texto a mostrar. 
         icon:"pi pi-home",
         //Icon es la representacion grafica que se muestra en el servidor
-        routerLink:"/"
+        routerLink:"home"
       },
       {
         label:"Menu",
