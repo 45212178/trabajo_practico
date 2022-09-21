@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import { User } from 'src/app/models/user';
-import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -16,17 +14,8 @@ export class NavbarComponent implements OnInit {
   //declaramos items en menuIten (poniendolo en un arreglo vacio) y lo importamos
   items: MenuItem[] = [];
   //declaramos usuarios en user (lo ponemos en un arreglo vacio ) y lo importamos
-  usuarios: User [] = [];
-  //declaramos que la variable es falsa
-  adminVisible:boolean= false
-  usuario = new FormGroup({
-    nombreuser: new FormControl('',Validators.required),
-    contrasena: new FormControl('',Validators.required),
-    idUsuario: new FormControl('',Validators.required)
-  })
-  modalVisible:boolean=false;
-
-  constructor(private servicioUsuario: UsuariosService) { }
+  
+  constructor( ) { }
 
   
 
@@ -68,30 +57,11 @@ export class NavbarComponent implements OnInit {
         label:"Admin",
         icon:"pi pi-user-plus",
         routerLink:"Adin",
-        visible:this.adminVisible
       },
       
     ]
-    this.usuarios= this.servicioUsuario.getUsuarios()
+   
   }
 
-  iniciaSesion(){
-    let esteUsuario: User={
-      nombreUsuario:"Brisa_Lopez",
-      contrasena:"lopez",
-      idUsuario:"usuario1"
-    }
-    this['usuarios'].forEach ((usu: { nombreUsuario: string; contrasena: string; })=> {
-      if(usu.nombreUsuario === esteUsuario.nombreUsuario){
-        if(usu.contrasena === esteUsuario.contrasena){
-          this.adminVisible = true
-        }
-        else(
-          alert("La contraseña es incorrecta")
-        )
-      }
-      
-    });
-    this.ngOnInit()
-  }
+ 
 }

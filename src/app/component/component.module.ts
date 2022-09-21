@@ -7,13 +7,17 @@ import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {TableModule} from 'primeng/table'
 import {CarouselModule} from 'primeng/carousel';
+import { RatingModule } from 'primeng/rating';
+import { raceInit } from 'rxjs/internal/observable/race';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     ContactosComponent,
     AdminComponent,
     HomeComponent,
+    FooterComponent,
   ],
   exports:[
     
@@ -25,7 +29,8 @@ import {CarouselModule} from 'primeng/carousel';
     DialogModule,
     CarouselModule,
     ReactiveFormsModule,
-    
+    TableModule,
+    RatingModule
   ]
 })
 export class ComponentModule { }

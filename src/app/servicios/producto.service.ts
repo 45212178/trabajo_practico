@@ -6,6 +6,7 @@ import{map} from 'rxjs/operators'
   providedIn: 'root'
 })
 export class ProductoService {
+  getProductsSmall: any;
   obtenerProducto() {
     throw new Error('Method not implemented.');
   }
@@ -53,4 +54,7 @@ private productoCollection:AngularFirestoreCollection <Producto>
       }
     })
   }
+
+
+
 }

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
-
+import {DialogModule} from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -43,7 +43,8 @@ import {RatingModule} from 'primeng/rating';
     ButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ComponentModule,
-    RatingModule
+    RatingModule,
+    DialogModule
   ],
   providers: [ProductoService],
   bootstrap: [AppComponent]
