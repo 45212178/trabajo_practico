@@ -24,6 +24,7 @@ import { ComponentModule } from './component/component.module';
 import { TortasComponent } from './menu/tortas/tortas.component';
 import {RatingModule} from 'primeng/rating';
 
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import {RatingModule} from 'primeng/rating';
     ReactiveFormsModule,
     CardModule,
     ButtonModule,
+
+    CarouselModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ComponentModule,
     RatingModule,
