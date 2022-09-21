@@ -11,25 +11,32 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+
+
+  modalVisible:boolean=false;
+
+  
+  coleccionDeUsuarios: User[] = [];
+
+
   [x: string]: any;
   
   //declaramos items en menuIten (poniendolo en un arreglo vacio) y lo importamos
   items: MenuItem[] = [];
-  //declaramos usuarios en user (lo ponemos en un arreglo vacio ) y lo importamos
-  usuarios: User [] = [];
-  //declaramos que la variable es falsa
-  adminVisible:boolean= false
+
   usuario = new FormGroup({
     nombreuser: new FormControl('',Validators.required),
     contrasena: new FormControl('',Validators.required),
     idUsuario: new FormControl('',Validators.required)
   })
-  modalVisible:boolean=false;
-
-  constructor(private servicioUsuario: UsuariosService) { }
-
   
 
+  constructor(private servicioUsuarios:UsuariosService,private servicio2:UsuariosService) {
+
+  }
+  
+  adminVisible=false;
   ngOnInit(): void {
     //llamamos items 
     this.items = [
@@ -67,31 +74,60 @@ export class NavbarComponent implements OnInit {
       {
         label:"Admin",
         icon:"pi pi-user-plus",
-        routerLink:"Adin",
+        routerLink:"admin",
         visible:this.adminVisible
       },
       
     ]
-    this.usuarios= this.servicioUsuario.getUsuarios()
+    this.servicioUsuarios.obtenerusuarios().subscribe(usuario=>this.coleccionDeUsuarios=usuario)
   }
 
-  iniciaSesion(){
-    let esteUsuario: User={
-      nombreUsuario:"Brisa_Lopez",
-      contrasena:"lopez",
-      idUsuario:"usuario1"
-    }
-    this['usuarios'].forEach ((usu: { nombreUsuario: string; contrasena: string; })=> {
-      if(usu.nombreUsuario === esteUsuario.nombreUsuario){
-        if(usu.contrasena === esteUsuario.contrasena){
-          this.adminVisible = true
-        }
-        else(
-          alert("La contraseña es incorrecta")
-        )
+
+  textoBoton!: string;
+
+  agregarUsuario(){
+    if(this.usuario.valid){
+      let nuevoUsuario:User={
+        nombre:this.usuario.value.nombreuser!,
+        contrasena:this.usuario.value.contrasena!,
+        idusuario:""
+        
       }
-      
-    });
-    this.ngOnInit()
+      this.servicioUsuarios.crearUsuario(nuevoUsuario).then((usuario)=>{
+        alert("El usuario fue agregado con exito")
+        })
+        .catch((error)=>{
+        alert("El usuario no pudo ser cargado\nError: "+error);
+        })
+    }else{
+      alert("El formulario no esta completo")
+    }
   }
+
+  // verificarUsuario(){
+  //   this.usuario.forEach(coleccionDeUsuarios =>{
+  //     if(usuario.nombre=="Gianis"){
+  //       if(usuario.contrasena=="gianis123"){
+  //         this.adminVisible=true;
+  //         alert("Inicio sesion correctamente")
+  //         this.ngOnInit()
+  //       }
+  //     }
+  //   })
+  //  }
+  imprimirTexto(item:string){
+    alert(item)
+  }
+
+
+  mostrarDialogo(){
+    this.textoBoton ="Agregar"
+    this.modalVisible=true;
+  }
+
+
+    mostrar(){
+    this.servicio2.mostrarAlert("Bienvenido, iniciaste sesiòn")
+    this.adminVisible=true;
+    }
 }

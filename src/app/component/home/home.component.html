@@ -1,4 +1,12 @@
-<p-carousel [value]="cafe" [numVisible]="2" [numScroll]="2">
+<!--banner-->
+<div class="banner">
+  <div class="banner-description">
+      <h1 >Giann Espresso</h1> 
+      <div class="line" ></div>
+      <h2>- Comienza tu día con nuestra compañía - </h2>
+  </div>
+</div>
+<p-carousel class="m-4" [value]="cafe" [numVisible]="2" [numScroll]="2">
     <ng-template let-cafe pTemplate="item">
         <img src="{{cafe}}" style="width: 80%;height: 80%; margin: 0 10%;" alt="">
     </ng-template>
