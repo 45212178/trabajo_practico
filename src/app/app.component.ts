@@ -3,7 +3,6 @@ import { UsuariosService } from './servicios/usuarios.service';
 import { User } from './models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,26 +18,27 @@ export class AppComponent {
 
   modalVisible:boolean=false;
 
-  eliminarVisible:boolean;
 
-  colleccionDeUsuarios:User[];
-  constructor(private servicioUsuarios:UsuariosService){
-    this.servicioUsuarios.obtenerUsuarios().subscribe(user=>this.colleccionDeUsuarios=user)
+  colleccionDeUsuarios:User[] | undefined;
+  
+  constructor(private servicioUsuarios:UsuariosService,){
+   
+    this.servicioUsuarios.obtenerUsuarios().subscribe(usuario=>this.colleccionDeUsuarios=usuario)
   }
-<<<<<<< HEAD
+
   usuarios=this.servicioUsuarios.obtenerUsuarios();
   // cafe:string []= [
   //   "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600",
   //    "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=600",
   //     "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600"
   //   ]
-=======
+
   cafe:String [] = [
     "https://images.pexels.com/photos/1752806/pexels-photo-1752806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/2460822/pexels-photo-2460822.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/2460822/pexels-photo-2460822.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   ]
->>>>>>> 28e22d0ac5d868c39a8dfb7bfbdbd3ecf582c925
+
   ngOnInit():void {
 
   }
@@ -46,11 +46,11 @@ export class AppComponent {
 
 
    verificarUsuario(){
-    if(this.user.valid){
+    if(this.usuario.valid){
       let nuevoUsuario:User={
-        Nombre:this.User.value.nombre!,
-        Contrasena:this.User.value.contrasena!,
-        idUsuario:this.User.value.idusuario!,
+        nombre:this.usuario.value.nombre!,
+        contrasena:this.usuario.value.contrasena!,
+        idusuario:this.usuario.value.idusuario!,
  
       }
       this.servicioUsuarios.crearUsuario(nuevoUsuario).then((usuario)=>{
@@ -63,7 +63,5 @@ export class AppComponent {
       
       }
   }
-
-
   
 }

@@ -7,12 +7,7 @@ import{map} from 'rxjs/operators'
 })
 export class ProductoService {
   getProductsSmall: any;
-  obtenerProducto() {
-    throw new Error('Method not implemented.');
-  }
-  obtenerproductos() {
-    throw new Error('Method not implemented.');
-  }
+ 
 private productoCollection:AngularFirestoreCollection <Producto>
   constructor(private db: AngularFirestore) { 
 

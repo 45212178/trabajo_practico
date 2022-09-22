@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { ProductoService } from 'src/app/servicios/producto.service';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-admin',
@@ -9,14 +9,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
 
- 
+  
+  colleccionDeProductos!: Producto[];
+  constructor(private productoServicio: ProductoService) { }
 
-  constructor() { }
-
+  producto=this.productoServicio.obtenerProductos();
 
 
   ngOnInit(): void {
- 
+    this.productoServicio.obtenerProductos().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
   }
 
   

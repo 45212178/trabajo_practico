@@ -1,57 +1,104 @@
-<<<<<<< HEAD
-<p-carousel [value]="cafe" [numVisible]="1" [numScroll]="1">
+<div class="banner">
+    <div class="banner-description">
+        <h1 >Giann Espresso</h1> 
+        <div class="line" ></div>
+        <h2>- Comienza tu día con nuestra compañía - </h2>
+    </div>
+  </div>
+
+
+<div class="container" style="margin: 10px;  padding-top: 20px; text-align: center;">
+
+    <p-card class="card" header="{{producto.Nombre}}" subheader="{{producto.Tipo}}" [style]="{width: '300px' }" styleClass="p-card-shadow" *ngFor="let producto of colleccionDeProductos" >
+     <ng-template pTemplate="header" >
+       <img [src]="producto.img" style="border-radius: 20px; padding: 2px; width: 200px; height: 200px;" alt="">
+     </ng-template>
+     <h3><b>{{producto.Descripcion}}</b></h3>
+     <ng-template pTemplate="footer">
+       <p-button label="Eliminar" icon="pi pi-trash" (click)="mostrarEliminar(producto)" styleClass="p-button-danger" ></p-button>
+       <p-button label="Editar" icon="pi pi-check" (click)="mostrarEditar(producto)"></p-button>
+     </ng-template>
+   </p-card>
+</div>
+
+
+
+<button label="Ingresar Producto" (click)="mostrarDialogo()" pButton pRipple type="button" icon="pi pi-heart" class="p-button-rounded p-button-help"></button>
+<p-dialog header="Ingresar" [(visible)]="modalVisible">
+        <form [formGroup]="producto">
+       <span class="p-float-label m-4">
+          <input id="float-input" type="text" pInputText formControlName="nombre">
+          <label for="float-input">Nombre</label>
+      </span>
+    <span class="p-float-label m-4">
+      <input id="float-input" type="text" pInputText formControlName="tipo">
+      <label for="float-input">Tipo</label>
+  </span>
+  <span class="p-float-label m-4">
+    <input id="float-input" type="text" pInputText formControlName="descripcion">
+    <label for="float-input">Descripcion</label>
+</span>
+
+<span class="p-float-label m-4">
+  <input id="float-input" type="file" pInputText accept=".jpg .png .gif" (change)="cargarImagen($event)" formControlName="img">
+</span>
+  <button label="{{textoBoton}}" (click)="agregarProducto()" pButton pRipple type="button" icon="pi pi-heart" class="p-button-rounded p-button-help"></button>
+</form>
+</p-dialog>
+<p-dialog header="Advertencia" [(visible)]="eliminarVisible">
+    <p>¿Deseas eliminar este producto?</p>
+    <p-button icon="pi pi-check" (click)="borrarProducto()" styleClass="p-button-danger" ></p-button>
+    <p-button icon="pi pi-times" (click)="eliminarVisible=false"></p-button>
+</p-dialog>
+
+
+
+
+<p-carousel  [value]="cafe" [numVisible]="1" [numScroll]="1">
     <ng-template let-cafe pTemplate="item">
         <img src="{{cafe}}" style="width: 80%;height: 80%; margin: 0 10%;" alt="">
     </ng-template>
 </p-carousel>
-=======
-<!--banner-->
-<div class="banner">
-  <div class="banner-description">
-      <h1 >Giann Espresso</h1> 
-      <div class="line" ></div>
-      <h2>- Comienza tu día con nuestra compañía - </h2>
-  </div>
-</div>
-<div class="banner">
-  <div class="banner-description">
-      <h1 >Giann Espresso</h1> 
-      <div class="line" ></div>
-      <h2>- Comienza tu día con nuestra compañía - </h2>
-  </div>
-</div>
 
->>>>>>> 28e22d0ac5d868c39a8dfb7bfbdbd3ecf582c925
 
-  <h1 style="text-align: center;">Destacados</h1>
 
-  <div style="display: inline-block;">
-    <p-card header="Frappe" subheader="Disfruta de este buen frappe, café con hielo cubierto de espuma elaborado a partir de café instantáneo. " [style]="{'width': '360px','display':'inline-block','margin': '0 25px'}" styleClass="p-card-shadow" >
+  <h2 style="text-align: center;margin-top: 20px;">Destacados</h2>
+
+
+  <div class="row">
+<div class="col-4"> 
+    <p-card class="parrafo" header="Frappe" subheader="Disfruta de este buen frappe, café con hielo cubierto de espuma elaborado a partir de café instantáneo. " [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
         <ng-template pTemplate="header">
-            <img alt="Card" src="https://todocafe.es/wp-content/uploads/2020/05/cafe_frappe.jpg">
-            <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
-        </ng-template>
-        <ng-template pTemplate="footer">
-                   
-        </ng-template>
-    </p-card>
-
-    <p-card header="Cafe con Leche" subheader="Disfruta de este buen cafe con leche" [style]="{'width': '360px','display':'inline-block','margin': '0 25px'}" styleClass="p-card-shadow" >
-        <ng-template pTemplate="header">
-            <img alt="Card" src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/XYR7MYDFHRADVFO7YD3GHG7QHU.jpg">
-            <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
-            </ng-template>
-        <ng-template pTemplate="footer">
-        </ng-template>
-    </p-card>
-
-    <p-card header="Latte" subheader="Disfruta de un café latte calentito con una o dos dosis de expreso y leche calentada con vapor, con una pequeña capa de espuma de leche." [style]="{'width': '360px','display':'inline-block','margin': '0 25px'}" styleClass="p-card-shadow" >
-        <ng-template pTemplate="header">
-            <img alt="Card" src="https://cdn7.kiwilimon.com/recetaimagen/36986/46349.jpg"  >
-            <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
-        </ng-template>
-        <ng-template pTemplate="footer">
+            <img alt="Card" src="https://todocafe.es/wp-content/uploads/2020/05/cafe_frappe.jpg" width="200px" height="200px">
            
         </ng-template>
+        <ng-template pTemplate="footer">
+            <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>     
+        </ng-template>
     </p-card>
+</div>
+
+<div class="col-4">
+    <p-card class="parrafo" header="Dulce de Leche Latte" subheader="Disfruta de este Café espresso con delicioso dulce de leche, hielo y leche con un remolino de crema batida y salsa de caramelo." [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://static4.abc.es/media/bienestar/2020/06/19/cafe-fresco-kHW--620x349@abc.jpeg" width="200px"  height="200px">
+            
+            </ng-template>
+        <ng-template pTemplate="footer">
+            <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
+        </ng-template>
+    </p-card>
+
+</div>
+<div class="col-4">
+<p-card class="parrafo" header="Latte" subheader="Disfruta de un café latte con una o dos dosis de expreso y leche calentada con vapor, con una pequeña capa de espuma de leche." [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://cdn7.kiwilimon.com/recetaimagen/36986/46349.jpg"  width="200px" height="200px">
+            
+        </ng-template>
+        <ng-template pTemplate="footer">
+           <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
+        </ng-template>
+    </p-card>
+</div>
 </div>

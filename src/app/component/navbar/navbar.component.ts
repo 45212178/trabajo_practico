@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-
+import { User } from 'src/app/models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,37 +11,30 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 
-
+  usuario = new FormGroup({
+    nombreuser: new FormControl('',Validators.required),
+    contrasena: new FormControl('',Validators.required),
+    idUsuario: new FormControl('',Validators.required)
+  })
 
   modalVisible:boolean=false;
-
-  
-  coleccionDeUsuarios: User[] = [];
-
 
   [x: string]: any;
   
   //declaramos items en menuIten (poniendolo en un arreglo vacio) y lo importamos
   items: MenuItem[] = [];
 
-  //declaramos usuarios en user (lo ponemos en un arreglo vacio ) y lo importamos
-  
-  constructor( ) { }
-
-
-
-  usuario = new FormGroup({
-    nombreuser: new FormControl('',Validators.required),
-    contrasena: new FormControl('',Validators.required),
-    idUsuario: new FormControl('',Validators.required)
-  })
->>>>>>> 28e22d0ac5d868c39a8dfb7bfbdbd3ecf582c925
   
 
-  constructor(private servicioUsuarios:UsuariosService,private servicio2:UsuariosService) {
+
+  constructor(private servicioUsuario:UsuariosService) {
 
   }
   
+
+  usuarios=this.servicioUsuario.getUsers();
+
+
   adminVisible=false;
   ngOnInit(): void {
     //llamamos items 
@@ -79,71 +73,23 @@ export class NavbarComponent implements OnInit {
       {
         label:"Admin",
         icon:"pi pi-user-plus",
-<<<<<<< HEAD
-        routerLink:"Adin",
+        routerLink:"admin",
+        visible:this.adminVisible
       },
       
     ]
    
   }
 
- 
-=======
-        routerLink:"admin",
-        visible:this.adminVisible
-      },
-      
-    ]
-    this.servicioUsuarios.obtenerusuarios().subscribe(usuario=>this.coleccionDeUsuarios=usuario)
-  }
-
-
-  textoBoton!: string;
-
-  agregarUsuario(){
-    if(this.usuario.valid){
-      let nuevoUsuario:User={
-        nombre:this.usuario.value.nombreuser!,
-        contrasena:this.usuario.value.contrasena!,
-        idusuario:""
-        
-      }
-      this.servicioUsuarios.crearUsuario(nuevoUsuario).then((usuario)=>{
-        alert("El usuario fue agregado con exito")
-        })
-        .catch((error)=>{
-        alert("El usuario no pudo ser cargado\nError: "+error);
-        })
-    }else{
-      alert("El formulario no esta completo")
-    }
-  }
-
-  // verificarUsuario(){
-  //   this.usuario.forEach(coleccionDeUsuarios =>{
-  //     if(usuario.nombre=="Gianis"){
-  //       if(usuario.contrasena=="gianis123"){
-  //         this.adminVisible=true;
-  //         alert("Inicio sesion correctamente")
-  //         this.ngOnInit()
-  //       }
-  //     }
-  //   })
-  //  }
-  imprimirTexto(item:string){
-    alert(item)
-  }
-
-
-  mostrarDialogo(){
-    this.textoBoton ="Agregar"
-    this.modalVisible=true;
-  }
-
-
-    mostrar(){
-    this.servicio2.mostrarAlert("Bienvenido, iniciaste sesiòn")
-    this.adminVisible=true;
-    }
->>>>>>>
+    verificarUsuario(){
+      this.usuarios.forEach(usuario=>{
+        if(usuario.nombre=="Gianis"){
+          if(usuario.contrasena=="gianis123"){
+            this.adminVisible=true
+            alert("Inicio sesion correctamente")
+            this.ngOnInit()
+          }
+        }
+      })
+     }
 }

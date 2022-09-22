@@ -8,6 +8,7 @@ import { ComidasComponent } from './menu/comidas/comidas.component';
 import { TortasComponent } from './menu/tortas/tortas.component';
 
 const routes: Routes = [
+  {path:"",component:HomeComponent},
   {path:"admin", component:AdminComponent},
   {path:"bebidas", component:BebidasComponent},
   {path:"comidas", component:ComidasComponent},

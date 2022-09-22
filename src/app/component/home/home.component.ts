@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     Nombre: new FormControl('',Validators.required),
     Tipo: new FormControl('',Validators.required),
     Descripcion: new FormControl('',Validators.required),
+    img: new FormControl('',Validators.required),
     idProducto: new FormControl('',Validators.required)
   })
   productoSeleccionado!: Producto;
@@ -31,6 +32,8 @@ export class HomeComponent implements OnInit {
     
   }
  
+  productos=this.servicioProducto.obtenerProductos()
+
   adminVisible=false;
   
   cafe:String [] = [
@@ -54,6 +57,7 @@ export class HomeComponent implements OnInit {
         Nombre:this.producto.value.Nombre!,
         Tipo:this.producto.value.Tipo!,
         Descripcion:this.producto.value.Descripcion!,
+        img:this.producto.value.img!,
         idProducto:""
         
       }
@@ -72,6 +76,7 @@ export class HomeComponent implements OnInit {
       Nombre:this.producto.value.Nombre!,
       Tipo:this.producto.value.Tipo!,
       Descripcion:this.producto.value.Descripcion!,
+      img:this.producto.value.img!,
       idProducto:this.productoSeleccionado.idProducto!,
     }
     this.servicioProductos.modificarProducto(this.productoSeleccionado.idProducto,datos).then((producto)=>{
@@ -90,10 +95,14 @@ mostrarEditar(productoSeleccionado:Producto){
       Nombre:productoSeleccionado.Nombre,
       Tipo:productoSeleccionado.Tipo,
       Descripcion:productoSeleccionado.Descripcion,
+      img:productoSeleccionado.img,
       idProducto:productoSeleccionado.idProducto
     })
 }
-
+mostrarDialogo(){
+  this.textoBoton ="Agregar"
+  this.modalVisible=true;
+}
 cargarDatos(){
   if(this.textoBoton==="Agregar Producto"){
     this.agregarProducto()
