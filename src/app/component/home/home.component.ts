@@ -18,22 +18,22 @@ export class HomeComponent implements OnInit {
     Nombre: new FormControl('',Validators.required),
     Tipo: new FormControl('',Validators.required),
     Descripcion: new FormControl('',Validators.required),
-    img: new FormControl('',Validators.required),
-    idProducto: new FormControl('',Validators.required)
+    img: new FormControl('',Validators.required)
   })
+  
+
   productoSeleccionado!: Producto;
 
   modalVisible:boolean=false;
 
   eliminarVisible!: boolean;
   
-  colleccionDeProductos!: Producto[];
-  constructor(private servicioProducto:ProductoService,private servicioProductos:ProductoService) { 
+  colleccionDeProductos: Producto[] = [];
+
+  constructor(private servicioProductos:ProductoService) { 
     
   }
  
-  productos=this.servicioProducto.obtenerProductos()
-
   adminVisible=false;
   
   cafe:String [] = [
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.servicioProductos.obtenerProductos().subscribe((producto: Producto[])=>this.colleccionDeProductos=producto)
+    this.servicioProductos.obtenerProductos().subscribe(producto=>this.colleccionDeProductos=producto)
     
   }
   textoBoton!: string;
@@ -71,16 +71,18 @@ export class HomeComponent implements OnInit {
       alert("El formulario no esta completo")
     }
   }
+
+
   editarProducto(){
     let datos:Producto={
       Nombre:this.producto.value.Nombre!,
       Tipo:this.producto.value.Tipo!,
       Descripcion:this.producto.value.Descripcion!,
       img:this.producto.value.img!,
-      idProducto:this.productoSeleccionado.idProducto!,
+      idProducto:this.productoSeleccionado.idProducto
     }
     this.servicioProductos.modificarProducto(this.productoSeleccionado.idProducto,datos).then((producto)=>{
-      alert("El producto fue agregado con exito")
+      alert("El producto fue modificado con exito")
     })
     .catch((error)=>{
       alert("El producto no pudo ser modificado\nError: "+error);
@@ -95,8 +97,7 @@ mostrarEditar(productoSeleccionado:Producto){
       Nombre:productoSeleccionado.Nombre,
       Tipo:productoSeleccionado.Tipo,
       Descripcion:productoSeleccionado.Descripcion,
-      img:productoSeleccionado.img,
-      idProducto:productoSeleccionado.idProducto
+      img:productoSeleccionado.img
     })
 }
 mostrarDialogo(){
@@ -120,7 +121,7 @@ mostrarEliminar(productoSeleccionado:Producto){
 
 borrarProducto(){
   this.servicioProductos.eliminarProducto(this.productoSeleccionado.idProducto).then((resp)=>{
-    alert("El prducto fue eliminado con exito")
+    alert("El producto fue eliminado con exito")
   })
   .catch((error)=>{
     alert("El producto no pudo ser eliminado\nError: "+error)

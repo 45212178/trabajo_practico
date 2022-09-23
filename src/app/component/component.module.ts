@@ -12,15 +12,22 @@ import {CarouselModule} from 'primeng/carousel';
 import { RatingModule } from 'primeng/rating';
 import { raceInit } from 'rxjs/internal/observable/race';
 import { FooterComponent } from './footer/footer.component';
+import { InputTextModule } from "primeng/inputtext";
+import { TortasComponent } from '../menu/tortas/tortas.component';
+import { BebidasComponent } from '../menu/bebidas/bebidas.component';
+import { ComidasComponent } from '../menu/comidas/comidas.component';
 @NgModule({
   declarations: [
     ContactosComponent,
     AdminComponent,
     HomeComponent,
     FooterComponent,
+    TortasComponent,
+    BebidasComponent,
+    ComidasComponent
   ],
   exports:[
-    
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +37,8 @@ import { FooterComponent } from './footer/footer.component';
     CarouselModule,
     ReactiveFormsModule,
     TableModule,
-    RatingModule
+    RatingModule,
+    InputTextModule
   ]
 })
 export class ComponentModule { }

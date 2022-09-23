@@ -6,30 +6,19 @@ import{map} from 'rxjs/operators'
   providedIn: 'root'
 })
 export class UsuariosService {
-  getProductsSmall: any;
-  db: any;
-  private usuarios:User[];
-   obtenerUsuarios(){
-    return this.usuarioCollection.snapshotChanges().pipe(map(action=>action.map(a=>a.payload.doc.data())))
-    
-  }
+
 
   private usuarioCollection:AngularFirestoreCollection <User>
 
-  constructor(db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {
     this.usuarioCollection= db.collection('Usuarios')
 
-    this.usuarios=[
-      {nombre:"Gianis",contrasena:"gianis123",idusuario:"12324343"},
-      {nombre:"Gianinna",contrasena:"gianinna123",idusuario:"1298839"},
-      {nombre:"Lautaro",contrasena:"lautaro123",idusuario:"8239429"},
-      ]
-
+  
    }
-   getUsers(){
-    return this.usuarios;
-   }
-
+ obtenerUsuarios(){
+    return this.usuarioCollection.snapshotChanges().pipe(map(action=>action.map(a=>a.payload.doc.data())))
+    
+  }
   crearUsuario(nuevoUsuario:User){
     return new Promise(async(resolve, reject)=>{//retorna una nueva promesa, devolviendo un metodo asincrono
       try{// try = intentar 
@@ -46,7 +35,7 @@ export class UsuariosService {
     }
 
 modificarUsuario(idusuario:string,nuevaData:User){
-  return this.db.collection('usuarios').doc(idusuario).update(nuevaData)
+  return this.db.collection('Usuarios').doc(idusuario).update(nuevaData)
 
  }
 

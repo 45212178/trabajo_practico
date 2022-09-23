@@ -18,10 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductoService } from './servicios/producto.service';
 import {MenubarModule} from 'primeng/menubar';
-import { BebidasComponent } from './menu/bebidas/bebidas.component';
-import { ComidasComponent } from './menu/comidas/comidas.component';
 import { ComponentModule } from './component/component.module';
-import { TortasComponent } from './menu/tortas/tortas.component';
 import {RatingModule} from 'primeng/rating';
 
 import {CarouselModule} from 'primeng/carousel';
@@ -29,10 +26,7 @@ import {CarouselModule} from 'primeng/carousel';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    BebidasComponent,
-    ComidasComponent,
-    TortasComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +36,6 @@ import {CarouselModule} from 'primeng/carousel';
     ReactiveFormsModule,
     CardModule,
     ButtonModule,
-
     CarouselModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ComponentModule,

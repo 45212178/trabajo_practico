@@ -27,15 +27,15 @@
 <p-dialog header="Ingresar" [(visible)]="modalVisible">
         <form [formGroup]="producto">
        <span class="p-float-label m-4">
-          <input id="float-input" type="text" pInputText formControlName="nombre">
+          <input id="float-input"  type="text" pInputText formControlName="Nombre">
           <label for="float-input">Nombre</label>
       </span>
     <span class="p-float-label m-4">
-      <input id="float-input" type="text" pInputText formControlName="tipo">
+      <input id="float-input"  type="text" pInputText formControlName="Tipo">
       <label for="float-input">Tipo</label>
   </span>
   <span class="p-float-label m-4">
-    <input id="float-input" type="text" pInputText formControlName="descripcion">
+    <input id="float-input" type="text" pInputText formControlName="Descripcion">
     <label for="float-input">Descripcion</label>
 </span>
 
@@ -101,4 +101,37 @@
         </ng-template>
     </p-card>
 </div>
+<div class="col-4">
+    <p-card class="parrafo" header="Caramel Machiato" subheader="Leche al vapor manchada con espresso y un toque de vainilla, cubierta con un característico dibujo de caramelo." [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://cdn7.kiwilimon.com/recetaimagen/36988/46353.jpg"  width="200px" height="200px">
+                
+            </ng-template>
+            <ng-template pTemplate="footer">
+               <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card class="parrafo" header="Capuccino" subheader="Bebida nacida en Italia, preparada con café expreso y leche montada con vapor para darle cremosidad." [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://babycocina.com/wp-content/uploads/2020/06/cafe-capuchino.jpg"  width="200px" height="200px">
+                    
+                </ng-template>
+                <ng-template pTemplate="footer">
+                   <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
+                </ng-template>
+            </p-card>
+        </div>
+        <div class="col-4">
+            <p-card class="parrafo" header="Chai Frapuccino" subheader="Mezcla de Té negro especiado (Jengibre, Canela, Pimienta, Cardamomo, Anís Estrella, Clavo) con hielos." [style]="{'width': '360px','margin':'5px'}" styleClass="p-card-shadow" >
+                    <ng-template pTemplate="header">
+                        <img alt="Card" src="https://laverdadnoticias.com/export/sites/laverdad/img/2021/05/05/te_chai_frappe_2.jpg_852863802.jpg"  width="200px" height="200px">
+                        
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                       <p-rating  style="text-align: center; margin: 3px;"  [stars]="5" ></p-rating>
+                    </ng-template>
+                </p-card>
+            </div>
 </div>

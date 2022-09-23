@@ -6,8 +6,20 @@
 </p-menubar> -->
 
 <p-menubar [model]="items">
-    <button pButton type="button" label="Iniciar Sesion" (click)="verificarUsuario()" class="p-button-success" ></button>
-   
+    <button pButton type="button" label="Registrarte" (click)="mostrarDialogo()" class="p-button-success" ></button>
+    <p-dialog header="Iniciar Sesion" [(visible)]="modalVisible">
+      <form [formGroup]="usuario">
+    <span class="p-float-label m-4">
+      <input id="float-input"  type="text" pInputText formControlName="nombre">
+      <label for="float-input">Nombre</label>
+    </span>
+    <span class="p-float-label m-4">
+      <input id="float-input"  type="text" pInputText formControlName="contrasena">
+      <label for="float-input">Contraseña</label>
+    </span>
+<button label="{{textoBoton}}" (click)="agregarUsuario()" pButton pRipple type="button" icon="pi pi-heart" class="p-button-rounded p-button-help"></button>
+</form>
+</p-dialog>
     <style>
         #section_1173762778 {
           padding-top: 40px;

@@ -6,7 +6,6 @@ import{map} from 'rxjs/operators'
   providedIn: 'root'
 })
 export class ProductoService {
-  getProductsSmall: any;
  
 private productoCollection:AngularFirestoreCollection <Producto>
   constructor(private db: AngularFirestore) { 

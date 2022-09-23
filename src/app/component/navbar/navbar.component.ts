@@ -12,28 +12,27 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
 export class NavbarComponent implements OnInit {
 
   usuario = new FormGroup({
-    nombreuser: new FormControl('',Validators.required),
+    nombre: new FormControl('',Validators.required),
     contrasena: new FormControl('',Validators.required),
-    idUsuario: new FormControl('',Validators.required)
   })
 
+  eliminarVisible!: boolean;
   modalVisible:boolean=false;
+
+  colleccionDeUsuarios: User[]=[];
+
+  usuarioSeleccionado!:User;
 
   [x: string]: any;
   
   //declaramos items en menuIten (poniendolo en un arreglo vacio) y lo importamos
   items: MenuItem[] = [];
 
-  
-
-
-  constructor(private servicioUsuario:UsuariosService) {
+  constructor(private servicioUsuarios:UsuariosService) {
 
   }
   
-
-  usuarios=this.servicioUsuario.getUsers();
-
+ 
 
   adminVisible=false;
   ngOnInit(): void {
@@ -74,22 +73,73 @@ export class NavbarComponent implements OnInit {
         label:"Admin",
         icon:"pi pi-user-plus",
         routerLink:"admin",
-        visible:this.adminVisible
+        visible: this.adminVisible
       },
       
     ]
-   
+    this.servicioUsuarios.obtenerUsuarios().subscribe(usuario=>this.colleccionDeUsuarios=usuario)
+  }
+ textoBoton!: string;
+
+  verificarUsuario(){
+    let datos:User={
+      nombre:this.usuario.value.nombre!,
+      contrasena:this.usuario.value.contrasena!,
+      idusuario:this.usuarioSeleccionado.idusuario
+    }
+    this.servicioUsuarios.modificarUsuario(this.usuarioSeleccionado.idusuario,datos).then((usuario)=>{
+      alert("Bienvenido, iniciaste sesion")
+    })
+    .catch((error)=>{
+      alert("Hubo un problema para iniciar sesion")
+    })
   }
 
-    verificarUsuario(){
-      this.usuarios.forEach(usuario=>{
-        if(usuario.nombre=="Gianis"){
-          if(usuario.contrasena=="gianis123"){
-            this.adminVisible=true
-            alert("Inicio sesion correctamente")
-            this.ngOnInit()
-          }
-        }
+  
+agregarUsuario(){
+    if(this.usuario.valid){
+      let nuevoUsuario:User={
+        nombre:this.usuario.value.nombre!,
+        contrasena:this.usuario.value.contrasena!,
+        idusuario:""
+        
+      }
+      this.servicioUsuarios.crearUsuario(nuevoUsuario).then((usuario)=>{
+        alert("El usuario fue agregado con exito")
+        this.adminVisible=true
+        })
+        .catch((error)=>{
+        alert("El usuario no pudo ser cargado\nError: "+error);
+        })
+    }else{
+      alert("El formulario no esta completo")
+    }
+  }
+  mostrarEditar(usuarioSeleccionado:User){
+    this.usuarioSeleccionado =usuarioSeleccionado
+    this.textoBoton="Iniciar Sesion"
+    this.modalVisible=true;
+  
+    this.usuario.setValue({
+        nombre:usuarioSeleccionado.nombre,
+        contrasena:usuarioSeleccionado.contrasena
       })
-     }
+  }
+  mostrarDialogo(){
+    this.textoBoton ="Iniciar Sesion"
+    this.modalVisible=true
+    this.adminVisible=true
+    this.ngOnInit()
+  }
+
+  cargarDatos(){
+    if(this.textoBoton==="Agregar Usuario"){
+      this.verificarUsuario()
+    }
+    else if(this.textoBoton==="Editar usuario"){
+      this.agregarUsuario()
+    }
+    this.modalVisible=false
+    this.usuario.reset()
+  }
 }
