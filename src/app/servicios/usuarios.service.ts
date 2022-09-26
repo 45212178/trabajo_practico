@@ -7,7 +7,8 @@ import{map} from 'rxjs/operators'
 })
 export class UsuariosService {
 
-
+  //usuario:Gianis
+  //contraseña:gianis123
   private usuarioCollection:AngularFirestoreCollection <User>
 
   constructor(private db: AngularFirestore) {
